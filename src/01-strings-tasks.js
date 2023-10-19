@@ -179,29 +179,29 @@ function extractEmails(str) {
 }
 
 const printTopLine = (count) => {
-  const arr = Array(count).fill('-');
+  const arr = Array(count - 2).fill('─');
   arr.unshift('┌');
-  arr.push('┐\\n');
-  const line = arr.toString().replaceAll(',', '');
+  arr.push('┐\n');
+  const line = arr.toString().replace(/[,]/g, '');
 
   return line;
 };
 
 const printBottomLine = (count) => {
-  const arr = Array(count).fill('-');
+  const arr = Array(count - 2).fill('─');
   arr.unshift('└');
-  arr.push('┘\\n');
-  const line = arr.toString().replaceAll(',', '');
+  arr.push('┘\n');
+  const line = arr.toString().replace(/[,]/g, '');
 
   return line;
 };
 
 const printLineWithWhiteSpace = (count) => {
-  const arr = Array(count).fill(' ');
-  arr.unshift('|');
-  arr.push('|\\n');
+  const arr = Array(count - 2).fill(' ');
+  arr.unshift('│');
+  arr.push('│\n');
 
-  const line = arr.toString().replaceAll(',', '');
+  const line = arr.toString().replace(/[,]/g, '');
 
   return line;
 };
@@ -231,11 +231,11 @@ const printLineWithWhiteSpace = (count) => {
  */
 function getRectangleString(width, height) {
   let result = '';
-
-  for (let i = 0; i <= height - 1; i += 1) {
-    if (i === 0) {
+  // const height2 = height - 2;
+  for (let i = 1; i <= height; i += 1) {
+    if (i === 1) {
       result += printTopLine(width);
-    } else if (i === height - 1) {
+    } else if (i === height) {
       result += printBottomLine(width);
     } else {
       result += printLineWithWhiteSpace(width);
