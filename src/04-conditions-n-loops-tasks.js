@@ -30,13 +30,13 @@
 function getFizzBuzz(num) {
   switch (num) {
     case num % 3 === 0 && num % 5 === 0: {
-      return "FizzBuzz";      
+      return 'FizzBuzz';
     }
     case num % 3 === 0: {
-      return "Fizz";
+      return 'Fizz';
     }
     case num % 5 === 0: {
-      return "Buzz";
+      return 'Buzz';
     }
     default: {
       return num;
@@ -57,7 +57,7 @@ function getFizzBuzz(num) {
  *   10 => 3628800
  */
 function getFactorial(n) {
-   return Array.from({length:n},(_, i) => i + 1).reduce((i,n)=> i*n );
+  return Array.from({ length: n }, (_, i) => i + 1).reduce((i, next) => i * next);
 }
 
 
@@ -75,7 +75,7 @@ function getFactorial(n) {
  */
 function getSumBetweenNumbers(n1, n2) {
   let start = n1;
-  let end = n2;
+  const end = n2;
   let result = 0;
   while (start <= end) {
     result += start;
@@ -101,7 +101,8 @@ function getSumBetweenNumbers(n1, n2) {
  *   10,10,10 =>  true
  */
 function isTriangle(a, b, c) {
-  throw new Error('Not implemented');
+  if ((a + b) > c && (b + c) > a && (c + a) > b) return true;
+  return false;
 }
 
 
