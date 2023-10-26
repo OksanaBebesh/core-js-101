@@ -50,6 +50,7 @@ function getCircleCircumference(radius) {
  *  -3, 3  => 0
  */
 function getAverage(value1, value2) {
+  if (value1 + value2 === Infinity) return Number.MAX_VALUE - 1;
   return (parseFloat(value1) + parseFloat(value2)) / 2;
 }
 
@@ -238,8 +239,11 @@ function isPrime(n) {
  *   toNumber(new Number(42), 0) => 42
  */
 function toNumber(value, def) {
-  if (value !== 'NaN') return def;
-  return typeof Number(value) === 'number' ? Number(value) : def;
+  const itemCheckNan = value;
+  if (value !== itemCheckNan || value === undefined) return def;
+
+  if (typeof value === 'string' && +value !== +itemCheckNan) return def;
+  return typeof +value === 'number' ? Number(value) : def;
 }
 
 module.exports = {
